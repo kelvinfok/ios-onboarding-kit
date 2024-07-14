@@ -12,9 +12,13 @@ public class FavOnboardingKit {
     
   private let slides: [Slide]
   private let tintColor: UIColor
+  private let slideDurationInSeconds: Int
         
   private lazy var viewController: OnboardingViewController = {
-    let viewController = OnboardingViewController(slides: slides, tintColor: tintColor)
+    let viewController = OnboardingViewController(
+      slides: slides,
+      tintColor: tintColor,
+      slideDurationInSeconds: slideDurationInSeconds)
     viewController.modalTransitionStyle = .crossDissolve
     viewController.modalPresentationStyle = .fullScreen
     return viewController
@@ -29,9 +33,14 @@ public class FavOnboardingKit {
   
   private var parentVC: UIViewController?
   
-  public init(slides: [Slide], tintColor: UIColor) {
+  public init(
+    slides: [Slide],
+    tintColor: UIColor,
+    slideDurationInSeconds: Int = 3
+  ) {
     self.slides = slides
     self.tintColor = tintColor
+    self.slideDurationInSeconds = slideDurationInSeconds
   }
   
   public func launchOnboarding(parentVC: UIViewController, delegate: FavOnboardingKitDelegate) {

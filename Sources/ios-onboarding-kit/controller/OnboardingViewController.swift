@@ -15,7 +15,8 @@ class OnboardingViewController: UIViewController {
   private lazy var transitionView: TransitionView = {
     let view = TransitionView(
       slides: slides,
-      barColor: tintColor)
+      barColor: tintColor,
+      slideDurationInSeconds: slideDurationInSeconds)
     return view
   }()
   
@@ -35,10 +36,16 @@ class OnboardingViewController: UIViewController {
   
   private let slides: [Slide]
   private let tintColor: UIColor
+  private let slideDurationInSeconds: Int
   
-  init(slides: [Slide], tintColor: UIColor) {
+  init(
+    slides: [Slide],
+    tintColor: UIColor,
+    slideDurationInSeconds: Int
+  ) {
     self.slides = slides
     self.tintColor = tintColor
+    self.slideDurationInSeconds = slideDurationInSeconds
     super.init(nibName: nil, bundle: nil)
   }
   
